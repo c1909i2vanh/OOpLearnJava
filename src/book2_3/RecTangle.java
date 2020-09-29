@@ -16,13 +16,12 @@ public class RecTangle {
     private MyPoint topRight;
     private MyPoint bottomLeft;
 
-    public RecTangle() {
-    }
+   
 
     public RecTangle(MyPoint topLeft, MyPoint bottomRight) {
         this.topLeft = topLeft;
         this.bottomRight = bottomRight;
-        this.bottomLeft = new MyPoint(this.bottomRight.getX(), this.topLeft.getY());
+        this.bottomLeft = new MyPoint(this.topLeft.getX(), this.bottomRight.getY());
         this.topRight = new MyPoint(this.bottomRight.getX(), this.topLeft.getY());
     }
 
@@ -57,6 +56,18 @@ public class RecTangle {
   
     public MyPoint getBottomLeft() {
       return new MyPoint(this.topLeft.getX(),this.bottomRight.getY());
+    }
+   public double getPerimeter(){
+       return (topLeft.distance(topRight)+topRight.distance(bottomRight))*2;
+   }
+   public double getArea(){
+       return topLeft.distance(topRight)*topRight.distance(bottomRight);
+   }
+
+    @Override
+    public String toString() {
+        return "RecTangle[" + "topLeft=" + topLeft + ", bottomRight=" + bottomRight + ", topRight=" + topRight + ", bottomLeft=" + bottomLeft + ""
+                + "\n area= "+this.getArea() +" ,Perimeter= "+this.getPerimeter()+"]";
     }
     
 
